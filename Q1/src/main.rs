@@ -11,7 +11,7 @@ fn main() {
     let n : i32 = args[3].clone().parse().unwrap();
 
     let input_file = File :: open (input_file_name). expect ("Cannot open input file!");
-    let mut output_file = File :: open (output_file_name). expect ("Cannot open output file!");
+    let mut output_file = File :: create (output_file_name). expect ("Cannot open output file!");
 
     let reader = BufReader::new(input_file);
 
@@ -19,10 +19,8 @@ fn main() {
         let int : i32 = line.unwrap().parse().unwrap();
         if int < n{
             let mut to_write = int.to_string();
-            println!("{}", to_write);
-            write!(output_file, "{}", to_write);
+            write!(output_file, "{} \n", to_write);
         }
     }
     
-    println!("Hello, world!");
 }
